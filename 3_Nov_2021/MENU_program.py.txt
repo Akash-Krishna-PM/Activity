@@ -1,0 +1,68 @@
+#Q. Write a program to display a menu of food items
+#to the user and take input on what item they want and
+#how much of each item they want. The program should return
+#the total price to be paid by the user. Before printing
+#the total price, the user should also be shown what they had ordered
+#and the quantity of each item
+#and an option to order again should also be shown.
+
+def res_menu():
+    print("\n 1.Ball Grape\tRs.20\n 2.Vada\t\tRs.10\n 3.Pazhampori\tRs.12\n 4.Bonda\tRs.8\n 0.when finised selecting")
+
+def item():
+    ch=int(input("enter food choice:\t"))
+    return ch
+
+
+def quantity():
+    nos=int(input("Enter quantity"))
+    return nos
+
+def price_each(rmenu,qnt):
+    sub_total=rmenu*qnt
+    return sub_total
+
+item_list={'Ball Grape':0,'Vada':0,'Pazhampori':0,'Bonda':0}
+def item_price(choice,n):
+    if choice==1:
+        item_list['Ball Grape']+=n
+        return 20
+    elif choice==2:
+        item_list['Vada']+=n
+        return 10
+    elif choice==3:
+        item_list['Pazhampori']+=n
+        return 12
+    elif choice==4:
+        item_list['Bonda']+=n
+        return 8
+    else:
+        return 0
+
+res_menu()
+total=0
+reorder=0
+while True:
+    opt=item()
+    if opt!=0:
+        n=quantity()
+        total+=price_each(item_price(opt,n),n)
+    elif opt==0 and total==0:
+        print("It was pleasure sharing you the menu")
+    else:
+        print(f"total amount = {total}")
+        print("\n Items ordered are:")
+        for i,j in item_list.items():
+            if j != 0:
+                print(f"{i}\t-\t{j}nos")
+        
+        x=input("do you want anything else? (y/n)")
+        if x=='n':
+            print(f"Final bill {total}")
+            break
+        elif x=='y':
+            continue
+            
+    
+        
+
